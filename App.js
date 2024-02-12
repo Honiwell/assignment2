@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Image, StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 
 const MinesweeperApp = () => {
     const [level, setLevel] = useState('');
@@ -33,18 +33,18 @@ const MinesweeperApp = () => {
                 timer = 15;
                 break;
             case 'medium':
-                size = 8;
+                size = 6;
                 mines = 5;
                 timer = 25;
                 break;
             case 'hard':
-                size = 12;
-                mines = 8;
+                size = 7;
+                mines = 7;
                 timer = 40;
                 break;
             case 'ridiculous':
-                size = 16;
-                mines = 12;
+                size = 12;
+                mines = 9;
                 timer = 80;
                 break;
             default:
@@ -87,7 +87,7 @@ const MinesweeperApp = () => {
                 }
                 return prevTimer - 1;
             });
-        }, 1000);
+        }, 2000);
     };
 
     const endGame = (message) => {
@@ -146,6 +146,17 @@ const MinesweeperApp = () => {
 
     return (
         <View style={styles.container}>
+            <Image
+                style={styles.introLogo}
+                source={require('./mine2.png')}
+            />
+            <Text></Text>
+            <View style={styles.introText}>
+                <Text style={styles.introText}>Welcome to MINE SWEPT!</Text>
+                <Text style={styles.introText}>Your objective is the clear as many tiles as you can without tapping on a mine. It is a game of pure luck!</Text>
+                <Text></Text>
+            </View>
+          
             {!level ? (
                 <View>
                     <Text style={styles.levelText}>Select a level:</Text>
@@ -212,6 +223,25 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'white',
+    },
+    introLogo: {
+        //flex: 1,
+        width: '100%',
+        height:'33%',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    introText: {
+        fontSize: 14,
+        backgroundColor: 'lightblue',
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
+        //margin: 1,
+        //padding: 1,
+        borderRadius: 7,
     },
     levelText: {
         fontSize: 20,
